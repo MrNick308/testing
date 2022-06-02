@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Орфография</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Проверка текста</h1>
+<form action="#" th:action="@{/api/v1/checking}" th:object="${checking}" method="post">
+    <p>Введи текст: <input type="text" th:field="*{text}" /></p>
+    <p><input type="submit" value="Проверить" /> <input type="reset" value="Сбросить" /></p>
+</form>
+</body>
+</html>

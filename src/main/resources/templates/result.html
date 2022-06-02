@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Орфография</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:if="${checking.checkResult.right != null}">
+    <h1>Результат</h1>
+    <p th:text="'Исходный текст: ' + ${checking.text}" />
+    <p th:if="${checking.checkResult.errors != ''}" th:text="${checking.checkResult.errors}" style="white-space: pre-line"/>
+    <p th:if="${checking.checkResult.errors != ''}" th:text="'Исправленный текст: ' + ${checking.checkResult.right}" />
+    <p th:if="${checking.checkResult.errors == ''}" th:text="'Ошибки не надены! :)'" />
+    <a href="/api/v1/checking">Ввести другой текст</a>
+</div>
+<div th:if="${checking.checkResult.right == null}">
+    <h1>Проверка не выполнена!</h1>
+</div>
+</body>
+</html>
