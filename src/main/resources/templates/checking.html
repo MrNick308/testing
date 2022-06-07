@@ -6,8 +6,8 @@
 </head>
 <body>
 <h1>Проверка текста</h1>
-<form action="#" th:action="@{/api/v1/checking}" th:object="${checking}" method="post">
-    <p>Введи текст: <input type="text" th:field="*{text}" /></p>
+<form action="#" th:action="@{/api/v1/checking}" th:object="${checktext}" method="post">
+    <p>Введи текст: <input type="text" th:field="*{oldText}" /></p>
     <p><input type="submit" value="Проверить" /> <input type="reset" value="Сбросить" /></p>
 </form>
 </body>

@@ -5,15 +5,31 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<div th:if="${checking.checkResult.right != null}">
+<div th:if="${checktext.checkResult.complete == true}">
     <h1>Результат</h1>
-    <p th:text="'Исходный текст: ' + ${checking.text}" />
-    <p th:if="${checking.checkResult.errors != ''}" th:text="${checking.checkResult.errors}" style="white-space: pre-line"/>
-    <p th:if="${checking.checkResult.errors != ''}" th:text="'Исправленный текст: ' + ${checking.checkResult.right}" />
-    <p th:if="${checking.checkResult.errors == ''}" th:text="'Ошибки не надены! :)'" />
+    <p th:text="'Исходный текст: ' + ${checktext.oldText}" />
+
+    <div th:if="${checktext.checkResult.rightText != checktext.oldText}">
+        Допущенные ошибки:
+        <table>
+            <tr>
+                <td>Ошибка</td>
+                <td></td>
+                <td>Исправление</td>
+            </tr>
+            <tr th:each="mistake: ${checktext.checkResult.mistakes}">
+                <td th:text="${mistake.oldWord}"></td>
+                <td>></td>
+                <td th:text="${mistake.rightWord}" />
+            </tr>
+        </table>
+    </div>
+
+    <p th:if="${checktext.checkResult.rightText != checktext.oldText}" th:text="'Исправленный текст: ' + ${checktext.checkResult.rightText}" />
+    <p th:if="${checktext.checkResult.rightText == checktext.oldText}" th:text="'Ошибки не надены! :)'" />
     <a href="/api/v1/checking">Ввести другой текст</a>
 </div>
-<div th:if="${checking.checkResult.right == null}">
+<div th:if="${checktext.checkResult.complete == false}">
     <h1>Проверка не выполнена!</h1>
 </div>
 </body>
